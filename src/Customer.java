@@ -1,9 +1,29 @@
 /*
- * Each customer will belong to the bank and will begin with a name and an
- * initial balance (either $0 or based on an initial deposit).
+ * Each customer will belong to the bank and will have the following attributes:
+ *      - Name
+ *      - Phone Number
+ *      - Balance
+ *      - Transaction list
+ *      - ID number
  */
 package src;
 
-public class Customer {
+import java.util.ArrayList;
 
+public class Customer {
+    // Customer attributes
+    private int ID;
+    private String name;
+    private String phoneNumber;
+    private Double balance;
+    private ArrayList<Pair> transactions;
+
+    // Customer constructor
+    public Customer() {
+        this.ID = 12345;
+        this.name = "Henry Peeples";
+        this.phoneNumber = "111-111-1111";
+        this.balance = 100.00;
+        this.transactions = new ArrayList<Pair>();
+    }
 }
