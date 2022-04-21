@@ -38,18 +38,10 @@ public class HashTable<K, N, PN, B, T> {
         return ((int) key % numBuckets);
     }
 
-    // get bucket index
-    private int getBucketIndex(K key) {
-        int index = hashFunction(key) % numBuckets;
-        // hash code can return a negative number
-        index = index < 0 ? index * -1 : index;
-        return index;
-    }
-
     // find and return a specific customer
     public K get(K key) {
         // find head of chain for given key
-        int index = getBucketIndex(key);
+        int index = hashFunction(key);
 
         HashNode<K, N, PN, B, T> head = list.get(index);
 
@@ -67,7 +59,7 @@ public class HashTable<K, N, PN, B, T> {
     // add customer to the table
     public void insert(K key, N name, PN phoneNumber, B balance, T transactions) {
         // find head of chain
-        int index = getBucketIndex(key);
+        int index = hashFunction(key);
         HashNode<K, N, PN, B, T> head = list.get(index);
 
         // check if key is already in the table
@@ -96,7 +88,7 @@ public class HashTable<K, N, PN, B, T> {
 
     // remove a given customer
     public K remove(K key) {
-        int index = getBucketIndex(key);
+        int index = hashFunction(key);
         HashNode<K, N, PN, B, T> head = list.get(index);
 
         // search for key in chain
