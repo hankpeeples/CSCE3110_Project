@@ -5,10 +5,9 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class HashTable<K, V> {
-    private ArrayList<HashNode<K, V>> list;
+public class HashTable<K, N, PN, B, T> {
+    private ArrayList<HashNode<K, N, PN, B, T>> list;
     private int numBuckets;
     private int size;
 
@@ -25,14 +24,18 @@ public class HashTable<K, V> {
     }
 
     // get list size
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
     // return whether list is empty or not
-    public boolean isEmpty() { return size() == 0; }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 
     // hash function
-    private final int hashFunction(K key) {
-        return Objects.hashCode(key);
+    private int hashFunction(K key) {
+        return ((int) key % numBuckets);
     }
 
     // get bucket index
@@ -48,11 +51,11 @@ public class HashTable<K, V> {
         // find head of chain for given key
         int index = getBucketIndex(key);
 
-        HashNode<K, V> head = list.get(index);
+        HashNode<K, N, PN, B, T> head = list.get(index);
 
         // search for key in chain
         while (head != null) {
-            if (head.key.equals(key) && head.key == key) {
+            if (head.key.equals(key)) {
                 return head.key;
             }
             head = head.next;
@@ -62,15 +65,18 @@ public class HashTable<K, V> {
     }
 
     // add customer to the table
-    public void add(K key, V value) {
+    public void insert(K key, N name, PN phoneNumber, B balance, T transactions) {
         // find head of chain
         int index = getBucketIndex(key);
-        HashNode<K, V> head = list.get(index);
+        HashNode<K, N, PN, B, T> head = list.get(index);
 
         // check if key is already in the table
         while (head != null) {
             if (head.key.equals(key)) {
-                head.value = value;
+                head.name = name;
+                head.phoneNumber = phoneNumber;
+                head.balance = balance;
+                head.transactions = transactions;
                 return;
             }
             head = head.next;
@@ -79,7 +85,8 @@ public class HashTable<K, V> {
         // insert key in chain
         size++;
         head = list.get(index);
-        HashNode<K, V> newNode = new HashNode<K, V>(key, value);
+        HashNode<K, N, PN, B, T> newNode = new HashNode<K, N, PN, B, T>(key, name,
+                phoneNumber, balance, transactions);
         newNode.next = head;
         list.set(index, newNode);
 
@@ -90,10 +97,10 @@ public class HashTable<K, V> {
     // remove a given customer
     public K remove(K key) {
         int index = getBucketIndex(key);
-        HashNode<K, V> head = list.get(index);
+        HashNode<K, N, PN, B, T> head = list.get(index);
 
         // search for key in chain
-        HashNode<K, V> prev = null;
+        HashNode<K, N, PN, B, T> prev = null;
         while (head != null) {
             // key found
             if (head.key.equals(key)) {
@@ -103,7 +110,7 @@ public class HashTable<K, V> {
             prev = head;
             head = head.next;
         }
-         // key was not present
+        // key was not present
         if (head == null) {
             return null;
         }

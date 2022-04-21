@@ -3,13 +3,19 @@
  */
 package src;
 
-public class HashNode<K, V> {
-    K key;
-    V value;
-    HashNode<K, V> next;
+public class HashNode<K, N, PN, B, T> {
+    K key; // ID
+    N name;
+    PN phoneNumber;
+    B balance;
+    T transactions;
+    HashNode<K, N, PN, B, T> next;
 
-    public HashNode(K key, V value) {
+    public HashNode(K key, N name, PN phoneNumber, B balance, T transactions) {
         this.key = key;
-        this.value = value;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.balance = balance;
+        this.transactions = transactions;
     }
 }
