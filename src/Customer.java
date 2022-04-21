@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class Customer {
     // Customer attributes
-    private int ID;
-    private String name;
-    private String phoneNumber;
+    private final int ID;
+    private final String name;
+    private final String phoneNumber;
     private Double balance;
     private ArrayList<Pair> transactions;
 
