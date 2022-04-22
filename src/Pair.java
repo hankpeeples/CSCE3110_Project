@@ -12,4 +12,8 @@ public class Pair {
         this.type = type;
         this.amount = amount;
     }
+
+    public static void showList(Pair pair) {
+        System.out.println("\t- " + pair.type + ": $" + pair.amount);
+    }
 }

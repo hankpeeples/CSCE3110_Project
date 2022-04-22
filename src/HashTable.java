@@ -5,10 +5,11 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class HashTable<K, N, PN, B, T> {
-    private ArrayList<HashNode<K, N, PN, B, T>> list;
-    private int numBuckets;
+    private final ArrayList<HashNode<K, N, PN, B, T>> list;
+    private final int numBuckets;
     private int size;
 
     // constructor
@@ -23,7 +24,7 @@ public class HashTable<K, N, PN, B, T> {
         }
     }
 
-    // get list size
+    // find list size
     public int size() {
         return size;
     }
@@ -39,7 +40,7 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // find and return a specific customer
-    public K get(K key) {
+    public K find(K key) {
         // find head of chain for given key
         int index = hashFunction(key);
 
@@ -65,10 +66,10 @@ public class HashTable<K, N, PN, B, T> {
         // check if key is already in the table
         while (head != null) {
             if (head.key.equals(key)) {
-                head.name = name;
-                head.phoneNumber = phoneNumber;
-                head.balance = balance;
-                head.transactions = transactions;
+//                head.name = name;
+//                head.phoneNumber = phoneNumber;
+//                head.balance = balance;
+//                head.transactions = transactions;
                 return;
             }
             head = head.next;
@@ -117,5 +118,25 @@ public class HashTable<K, N, PN, B, T> {
         }
 
         return head.key;
+    }
+
+    // print list of every customer
+    public void printCustomerList() {
+        System.out.println("--------------------------------");
+        System.out.println("|\t  Total customers: " + size() + "       |");
+        System.out.println("--------------------------------");
+        for (int i = 0; i < numBuckets; i++) {
+            if (list.get(i) != null) {
+                HashNode<K, N, PN, B, T> customer = list.get(i);
+                ArrayList<Pair> transactions = (ArrayList<Pair>) customer.transactions;
+                System.out.println("ID: " + customer.key);
+                System.out.println("Name: " + customer.name);
+                System.out.println("Phone number: " + customer.phoneNumber);
+                System.out.println("Balance: " + customer.balance);
+                System.out.println("Transactions: ");
+                Pair.showList(transactions.get(0));
+                System.out.println("--------------------------------");
+            }
+        }
     }
 }

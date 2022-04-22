@@ -7,16 +7,13 @@
  */
 package src;
 
+import java.util.ArrayList;
+
 public class Bank {
     private final String name;
 
     // Bank constructor
     public Bank(String name) {
         this.name = name;
-    }
-
-    // prints a list of customers in the system
-    public void printCustomerList() {
-
     }
 }
