@@ -21,16 +21,17 @@ public class Bank {
     }
 
     // add new customer
-    public void addNewCustomer() {
+    public void addNewCustomer(HashTable<Integer, String, String, Double,
+            ArrayList<Pair>> customerList) {
         Scanner scnr = new Scanner(System.in);
         ArrayList<Pair> transactions = new ArrayList<>();
-        HashTable<Integer, String, String, Double, ArrayList<Pair>> customerList =
-                new HashTable<>();
+
+        System.out.println();
 
         System.out.print("Enter customers name: ");
         String name = scnr.nextLine();
 
-        System.out.print("\nEnter customers phone number: ");
+        System.out.print("Enter customers phone number: ");
         String phoneNumber = scnr.nextLine();
 
         System.out.print("Are they making an initial deposit? (y/n): ");
@@ -38,12 +39,13 @@ public class Bank {
 
         Double balance = 0.00;
         if (c.equals("y")) {
-            System.out.println("Enter the deposit amount: ");
+            System.out.print("Enter the deposit amount: ");
             balance = scnr.nextDouble();
             // add initial deposit amount to transaction list
             transactions.add(new Pair("Initial Deposit", balance));
         }
 
+        System.out.println();
         // generate ID
         int id = ThreadLocalRandom.current().nextInt(0, 999);
         // add customer to hash table

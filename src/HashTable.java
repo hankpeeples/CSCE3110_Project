@@ -136,7 +136,10 @@ public class HashTable<K, N, PN, B, T> {
                 System.out.println("Phone number: " + customer.phoneNumber);
                 System.out.println("Balance: " + customer.balance);
                 System.out.println("Transactions: ");
-                Pair.showList(transactions.get(0));
+                if (!transactions.isEmpty())
+                    Pair.showList(transactions.get(0));
+                else
+                    System.out.println("\t- N/A");
                 System.out.println("--------------------------------");
             }
         }

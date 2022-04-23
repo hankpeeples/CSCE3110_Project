@@ -14,6 +14,6 @@ public class Pair {
     }
 
     public static void showList(Pair pair) {
-        System.out.println("\t- " + pair.type + ": $" + pair.amount);
+        System.out.printf("\t- %s: %.2f\n", pair.type, pair.amount);
     }
 }
