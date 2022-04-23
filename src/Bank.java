@@ -60,6 +60,12 @@ public class Bank {
     // make deposit for a customer
     public String makeDeposit(HashTable<Integer, String, String, Double,
             ArrayList<Pair>> customerList) {
+        if (customerList.size() == 0)
+            return """
+
+                    Unable to make a deposit
+                    This bank has no customers yet...""";
+
         HashNode<Integer, String, String, Double, ArrayList<Pair>> customer;
 
         System.out.print("\nEnter customers ID: ");
