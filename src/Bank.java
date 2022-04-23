@@ -13,17 +13,11 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Bank {
-    private final String bankName;
-
-    // Bank constructor
-    public Bank(String bankName) {
-        this.bankName = bankName;
-    }
+    Scanner scnr = new Scanner(System.in);
 
     // add new customer
     public void addNewCustomer(HashTable<Integer, String, String, Double,
             ArrayList<Pair>> customerList) {
-        Scanner scnr = new Scanner(System.in);
         ArrayList<Pair> transactions = new ArrayList<>();
 
         System.out.println();
@@ -50,5 +44,19 @@ public class Bank {
         int id = ThreadLocalRandom.current().nextInt(0, 999);
         // add customer to hash table
         customerList.insert(id, name, phoneNumber, balance, transactions);
+    }
+
+    // show bank system menu
+    public int showMenu() {
+        System.out.println("\n-----------  Bank System  -----------");
+        System.out.println("[1] Add new customer");
+        System.out.println("[2] Deposit");
+        System.out.println("[3] Withdraw");
+        System.out.println("[4] Show customer transactions");
+        System.out.println("[0] Exit");
+
+        System.out.print("Option: ");
+
+        return scnr.nextInt();
     }
 }
