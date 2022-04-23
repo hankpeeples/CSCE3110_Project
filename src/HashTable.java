@@ -124,23 +124,25 @@ public class HashTable<K, N, PN, B, T> {
 
     // print list of every customer
     public void printCustomerList() {
-        System.out.println("--------------------------------");
-        System.out.println("|\t  Total customers: " + size() + "       |");
-        System.out.println("--------------------------------");
+        System.out.println("\n\t- - - - - - - - - - - - - - - -");
+        System.out.println("\t|\t  Total customers: " + size() + "      |");
+        System.out.println("\t- - - - - - - - - - - - - - - -");
         for (int i = 0; i < numBuckets; i++) {
             if (list.get(i) != null) {
                 HashNode<K, N, PN, B, T> customer = list.get(i);
                 ArrayList<Pair> transactions = (ArrayList<Pair>) customer.transactions;
-                System.out.println("ID: " + customer.key);
-                System.out.println("Name: " + customer.name);
-                System.out.println("Phone number: " + customer.phoneNumber);
-                System.out.println("Balance: " + customer.balance);
-                System.out.println("Transactions: ");
+                System.out.println("\t\u001b[32mID: \u001b[0m" + customer.key);
+                System.out.println("\t\u001b[32mName: \u001b[0m" + customer.name);
+                System.out.println("\t\u001b[32mPhone number: \u001b[0m" + customer.phoneNumber);
+                System.out.printf("\t\u001b[32mBalance: \u001b[0m$%.2f\n",
+                        customer.balance);
+                System.out.println("\t\u001b[32mTransactions: \u001b[0m");
                 if (!transactions.isEmpty())
-                    Pair.showList(transactions.get(0));
+                    for (int j = 0; j < transactions.size(); j++)
+                        Pair.showList(transactions.get(j));
                 else
                     System.out.println("\t- N/A");
-                System.out.println("--------------------------------");
+                System.out.println("\t- - - - - - - - - - - - - - - -");
             }
         }
     }

@@ -20,9 +20,7 @@ public class Bank {
             ArrayList<Pair>> customerList) {
         ArrayList<Pair> transactions = new ArrayList<>();
 
-        System.out.println();
-
-        System.out.print("Enter customers name: ");
+        System.out.print("\nEnter customers name: ");
         String name = scnr.nextLine();
 
         System.out.print("Enter customers phone number: ");
@@ -39,7 +37,6 @@ public class Bank {
             transactions.add(new Pair("Initial Deposit", balance));
         }
 
-        System.out.println();
         // generate ID
         int id = ThreadLocalRandom.current().nextInt(0, 999);
         // add customer to hash table
@@ -58,5 +55,28 @@ public class Bank {
         System.out.print("Option: ");
 
         return scnr.nextInt();
+    }
+
+    // make deposit for a customer
+    public String makeDeposit(HashTable<Integer, String, String, Double,
+            ArrayList<Pair>> customerList) {
+        HashNode<Integer, String, String, Double, ArrayList<Pair>> customer;
+
+        System.out.print("\nEnter customers ID: ");
+        int id = scnr.nextInt();
+
+        customer = customerList.find(id);
+
+        if (customer != null) {
+            ArrayList<Pair> transactions = customer.transactions;
+            System.out.print("Enter deposit amount: $");
+            Double amount  = scnr.nextDouble();
+            customer.balance += amount;
+            transactions.add(new Pair("Deposit", amount));
+            return String.format("$%.2f deposit was " +
+                    "successfully processed", amount);
+        } else {
+            return "Customer [" + id + "] was not found in the system.";
+        }
     }
 }
