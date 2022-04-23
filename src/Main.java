@@ -13,11 +13,20 @@ public class Main {
         henryTransactions.add(new Pair("Initial Deposit", 100.00));
         benTransactions.add(new Pair("Initial Deposit", 200.00));
 
-        customerList.insert(457, "Henry Peeples", "111-222-3333",
+        customerList.insert(646534, "Henry Peeples", "111-222-3333",
                 100.00, henryTransactions);
-        customerList.insert(234, "Ben", "333-222-1111",
+        customerList.insert(87654, "Ben", "333-222-1111",
                 200.00, benTransactions);
+        customerList.insert(87654, "Someone", "333-222-1111",
+                23400.00, benTransactions);
 
         customerList.printCustomerList();
+
+        customerList.remove(646534);
+
+        customerList.printCustomerList();
+
+
+//        System.out.println();
     }
 }

@@ -5,7 +5,6 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class HashTable<K, N, PN, B, T> {
     private final ArrayList<HashNode<K, N, PN, B, T>> list;
@@ -40,7 +39,7 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // find and return a specific customer
-    public K find(K key) {
+    public HashNode<K, N, PN, B, T> find(K key) {
         // find head of chain for given key
         int index = hashFunction(key);
 
@@ -49,7 +48,8 @@ public class HashTable<K, N, PN, B, T> {
         // search for key in chain
         while (head != null) {
             if (head.key.equals(key)) {
-                return head.key;
+                // return the all customer info
+                return head;
             }
             head = head.next;
         }
@@ -70,6 +70,8 @@ public class HashTable<K, N, PN, B, T> {
 //                head.phoneNumber = phoneNumber;
 //                head.balance = balance;
 //                head.transactions = transactions;
+                System.out.println("Key found in table at " + index + ", " +
+                        "nothing inserted.");
                 return;
             }
             head = head.next;
