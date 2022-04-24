@@ -133,17 +133,15 @@ public class HashTable<K, N, PN, B, T> {
             if (list.get(i) != null) {
                 HashNode<K, N, PN, B, T> customer = list.get(i);
                 ArrayList<Pair> transactions = (ArrayList<Pair>) customer.transactions;
-                System.out.println("\t\u001b[32mID: \u001b[0m" + customer.key);
-                System.out.println("\t\u001b[32mName: \u001b[0m" + customer.name);
-                System.out.println("\t\u001b[32mPhone number: \u001b[0m" + customer.phoneNumber);
-                System.out.printf("\t\u001b[32mBalance: \u001b[0m$%.2f\n",
+                System.out.println("\t\u001b[33mID: \u001b[0m" + customer.key);
+                System.out.println("\t\u001b[33mName: \u001b[0m" + customer.name);
+                System.out.println("\t\u001b[33mPhone number: \u001b[0m" + customer.phoneNumber);
+                System.out.printf("\t\u001b[33mBalance: \u001b[0m$%.2f\n",
                         customer.balance);
-                System.out.println("\t\u001b[32mTransactions: \u001b[0m");
+                System.out.println("\t\u001b[33mTransactions: \u001b[0m");
                 if (!transactions.isEmpty())
                     for (int j = 0; j < transactions.size(); j++)
                         Pair.showList(transactions.get(j));
-                else
-                    System.out.println("\t- N/A");
                 System.out.println("\t- - - - - - - - - - - - - - - - - - - -" +
                         " - - - - -");
             }

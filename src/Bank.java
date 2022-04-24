@@ -20,6 +20,7 @@ public class Bank {
             ArrayList<Pair>> customerList) {
         ArrayList<Pair> transactions = new ArrayList<>();
 
+        scnr.nextLine();
         System.out.print("\nEnter customers name: ");
         String name = scnr.nextLine();
 
@@ -41,6 +42,8 @@ public class Bank {
         int id = ThreadLocalRandom.current().nextInt(0, 999);
         // add customer to hash table
         customerList.insert(id, name, phoneNumber, balance, transactions);
+        System.out.printf("\u001b[32;1mCustomer " +
+                "successfully added with ID: %d\u001b[0m\n", id);
     }
 
     // show bank system menu

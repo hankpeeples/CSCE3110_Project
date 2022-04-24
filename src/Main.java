@@ -28,7 +28,13 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    bank.addNewCustomer(customerList);
+                    try {
+                        bank.addNewCustomer(customerList);
+                    } catch (Exception e) {
+                        System.out.println("\u001b[31;1mUnable to add " +
+                                "customer, please try again...\u001b[0m");
+                        throw new RuntimeException(e);
+                    }
                     break;
                 case 2:
                     System.out.print("\nEnter customers id: ");
@@ -36,8 +42,7 @@ public class Main {
                     Double amount = bank.deposit(customerList.find(id));
                     if (amount != -1.00)
                         System.out.printf("\u001b[32;1m$%.2f deposit was " +
-                                        "successful \u001b[0m\n",
-                                amount);
+                                "successful \u001b[0m\n", amount);
                     else
                         System.out.println("\u001b[31;1mUnable to find " +
                                 "account, please try again...\u001b[0m");
