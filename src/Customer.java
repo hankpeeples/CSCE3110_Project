@@ -8,8 +8,6 @@
  */
 package src;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class Customer {

@@ -58,31 +58,25 @@ public class Bank {
     }
 
     // make deposit for a customer
-    public String makeDeposit(HashTable<Integer, String, String, Double,
-            ArrayList<Pair>> customerList) {
-        if (customerList.size() == 0)
-            return """
-
-                    Unable to make a deposit
-                    This bank has no customers yet...""";
-
-        HashNode<Integer, String, String, Double, ArrayList<Pair>> customer;
-
-        System.out.print("\nEnter customers ID: ");
-        int id = scnr.nextInt();
-
-        customer = customerList.find(id);
+    public Double deposit(HashNode<Integer, String, String, Double,
+            ArrayList<Pair>> customer) {
 
         if (customer != null) {
-            ArrayList<Pair> transactions = customer.transactions;
             System.out.print("Enter deposit amount: $");
-            Double amount  = scnr.nextDouble();
+            Double amount = scnr.nextDouble();
+
             customer.balance += amount;
-            transactions.add(new Pair("Deposit", amount));
-            return String.format("$%.2f deposit was " +
-                    "successfully processed", amount);
-        } else {
-            return "Customer [" + id + "] was not found in the system.";
+
+            customer.transactions.add(new Pair("Deposit", amount));
+
+            return amount;
         }
+        return -1.00;
     }
+
+    // withdraw from customers account
+//    public String withdraw(HashTable<Integer, String, String, Double,
+//            ArrayList<Pair>> customerList) {
+//
+//    }
 }
