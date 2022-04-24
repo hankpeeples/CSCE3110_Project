@@ -124,9 +124,11 @@ public class HashTable<K, N, PN, B, T> {
 
     // print list of every customer
     public void printCustomerList() {
-        System.out.println("\n\t- - - - - - - - - - - - - - - -");
-        System.out.println("\t|\t  Total customers: " + size() + "      |");
-        System.out.println("\t- - - - - - - - - - - - - - - -");
+        System.out.println("\n\t- - - - - - - - - - - - - - - - - - - - - - " +
+                "- - -");
+        System.out.println("\t|\t\tTotal customers: " + size() + "\t\t|");
+        System.out.println("\t- - - - - - - - - - - - - - - - - - - - - - - -" +
+                " -");
         for (int i = 0; i < numBuckets; i++) {
             if (list.get(i) != null) {
                 HashNode<K, N, PN, B, T> customer = list.get(i);
@@ -142,7 +144,8 @@ public class HashTable<K, N, PN, B, T> {
                         Pair.showList(transactions.get(j));
                 else
                     System.out.println("\t- N/A");
-                System.out.println("\t- - - - - - - - - - - - - - - -");
+                System.out.println("\t- - - - - - - - - - - - - - - - - - - -" +
+                        " - - - - -");
             }
         }
     }
