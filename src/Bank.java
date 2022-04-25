@@ -162,6 +162,7 @@ public class Bank {
                 }
                 break;
             default:
+                System.out.println("\u001b[31;1mInvalid option...\u001b[0m\n");
                 editAccountDetails(customer);
                 break;
         }
