@@ -13,6 +13,7 @@ public class Main {
                 new HashTable<>();
 
         int choice = -1;
+        int id = -1;
 
         ArrayList<Pair> hTransactions = new ArrayList<>();
         ArrayList<Pair> pTransactions = new ArrayList<>();
@@ -37,26 +38,22 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.print("\nEnter customers ID: ");
-                    int id = scnr.nextInt();
+                    id = bank.getId();
                     // make deposit
                     bank.deposit(customerList.find(id));
                     break;
                 case 3:
-                    System.out.print("\nEnter customers ID: ");
-                    id = scnr.nextInt();
+                    id = bank.getId();
                     // make withdraw
                     bank.withdraw(customerList.find(id));
                     break;
                 case 4:
-                    System.out.print("\nEnter customers ID: ");
-                    id = scnr.nextInt();
+                    id = bank.getId();
                     // show specific customers transactions
                     bank.showCustomerTransactions(customerList.find(id));
                     break;
                 case 5:
-                    System.out.print("\nEnter customers ID: ");
-                    id = scnr.nextInt();
+                    id = bank.getId();
                     // remove customer from bank
                     int rm = customerList.remove(id);
                     if (rm == -1)
@@ -72,11 +69,13 @@ public class Main {
                     // edit customer account details
                     bank.editAccountDetails(customerList.find(id));
                     break;
+                case 7:
+                    customerList.printCustomerList();
+                    break;
                 case 0:
                     System.out.println("\nGoodbye...");
                     break;
                 default:
-                    customerList.printCustomerList();
                     break;
             }
         } while (choice != 0);

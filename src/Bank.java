@@ -55,11 +55,19 @@ public class Bank {
         System.out.println("[4] Show customer transactions");
         System.out.println("[5] Close account");
         System.out.println("[6] Edit account details");
+        System.out.println("[7] Show list of all customers");
         System.out.println("[0] Exit");
 
         System.out.print("Option: ");
 
-        return scnr.nextInt();
+        try {
+            return scnr.nextInt();
+        } catch (Exception e) {
+            scnr.next();
+            System.out.println("\u001b[31;1mInvalid input... Please " +
+                    "enter a number from 0 - 7\u001b[0m");
+            return -1;
+        }
     }
 
     // make deposit for a customer
@@ -157,5 +165,11 @@ public class Bank {
                 editAccountDetails(customer);
                 break;
         }
+    }
+
+    // get customers id
+    public int getId() {
+        System.out.print("\nEnter customers ID: ");
+        return scnr.nextInt();
     }
 }
