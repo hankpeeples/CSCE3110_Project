@@ -67,7 +67,10 @@ public class Main {
                                 "removed.\u001b[0m\n", id);
                     break;
                 case 6:
+                    System.out.print("\nEnter customers ID: ");
+                    id = scnr.nextInt();
                     // edit customer account details
+                    bank.editAccountDetails(customerList.find(id));
                     break;
                 case 0:
                     System.out.println("\nGoodbye...");

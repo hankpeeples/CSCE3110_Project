@@ -136,6 +136,7 @@ public class HashTable<K, N, PN, B, T> {
                 // alternative way to get around it
                 @SuppressWarnings({"unchecked"})
                 ArrayList<Pair> transactions = (ArrayList<Pair>) customer.transactions;
+
                 System.out.println("\t\u001b[33mID: \u001b[0m" + customer.key);
                 System.out.println("\t\u001b[33mName: \u001b[0m" + customer.name);
                 System.out.println("\t\u001b[33mPhone number: \u001b[0m" + customer.phoneNumber);

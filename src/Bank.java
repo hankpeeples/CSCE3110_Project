@@ -117,4 +117,45 @@ public class Bank {
             for (int j = 0; j < customer.transactions.size(); j++)
                 Pair.showList(customer.transactions.get(j));
     }
+
+    // edit specific customer account details
+    public void editAccountDetails(HashNode<Integer, String, String,
+            Double, ArrayList<Pair>> customer) {
+        System.out.println("What item do you want to edit?");
+        System.out.println("[1] Name");
+        System.out.println("[2] Phone Number");
+        System.out.print("Option: ");
+        int c = scnr.nextInt();
+
+        switch (c) {
+            case 1:
+                try {
+                    scnr.nextLine();
+                    System.out.print("Enter new name: ");
+                    customer.name = scnr.nextLine();
+                    System.out.println("\u001b[32;1mAccount name was successfully" +
+                            " updated \u001b[0m");
+                } catch (Exception e) {
+                    System.out.println("\u001b[31;1mUnable to update account " +
+                            "name...\u001b[0m");
+//                    throw new RuntimeException(e);
+                }
+            case 2:
+                try {
+                    scnr.nextLine();
+                    System.out.print("Enter new phone number: ");
+                    customer.phoneNumber = scnr.nextLine();
+                    System.out.println("\u001b[32;1mAccount phone number was " +
+                            "successfully updated \u001b[0m");
+                } catch (Exception e) {
+                    System.out.println("\u001b[31;1mUnable to update account " +
+                            "phone number...\u001b[0m");
+//                    throw new RuntimeException(e);
+                }
+                break;
+            default:
+                editAccountDetails(customer);
+                break;
+        }
+    }
 }
