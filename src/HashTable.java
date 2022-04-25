@@ -90,7 +90,7 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // remove a given customer
-    public K remove(K key) {
+    public Integer remove(K key) {
         int index = hashFunction(key);
         HashNode<K, N, PN, B, T> head = list.get(index);
 
@@ -107,7 +107,7 @@ public class HashTable<K, N, PN, B, T> {
         }
         // key was not present
         if (head == null) {
-            return null;
+            return -1;
         }
 
         size--;
@@ -119,7 +119,7 @@ public class HashTable<K, N, PN, B, T> {
             list.set(index, head.next);
         }
 
-        return head.key;
+        return (Integer) head.key;
     }
 
     // print list of every customer

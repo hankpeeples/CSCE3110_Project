@@ -63,7 +63,7 @@ public class Bank {
     }
 
     // make deposit for a customer
-    public Double deposit(HashNode<Integer, String, String, Double,
+    public void deposit(HashNode<Integer, String, String, Double,
             ArrayList<Pair>> customer) {
 
         if (customer != null) {
@@ -74,13 +74,16 @@ public class Bank {
 
             customer.transactions.add(new Pair("Deposit", amount));
 
-            return amount;
+            System.out.printf("\u001b[32;1m$%.2f deposit was " +
+                    "successful \u001b[0m\n", amount);
+            return;
         }
-        return -1.00;
+        System.out.println("\u001b[31;1mUnable to find " +
+                "account, please try again...\u001b[0m");
     }
 
     // withdraw from customers account
-    public Double withdraw(HashNode<Integer, String, String, Double,
+    public void withdraw(HashNode<Integer, String, String, Double,
             ArrayList<Pair>> customer) {
 
         if (customer != null) {
@@ -92,11 +95,26 @@ public class Bank {
 
                 customer.transactions.add(new Pair("Withdraw", amount));
 
-                return amount;
+                System.out.printf("\u001b[32;1m$%.2f withdraw was " +
+                        "successful \u001b[0m\n", amount);
+                return;
             }
             // not enough money in account
-            return -2.00;
+            System.out.println("\u001b[31;1mInsufficient funds.." +
+                    ".\u001b[0m");
+            return;
         }
-        return -1.00;
+        System.out.println("\u001b[31;1mUnable to find " +
+                "account, please try again...\u001b[0m");
+    }
+
+    // show specific customers transactions
+    public void showCustomerTransactions(HashNode<Integer, String, String,
+            Double, ArrayList<Pair>> customer) {
+        System.out.printf("\n\t\u001b[33mTransactions for %s: \u001b[0m\n",
+                customer.name);
+        if (!customer.transactions.isEmpty())
+            for (int j = 0; j < customer.transactions.size(); j++)
+                Pair.showList(customer.transactions.get(j));
     }
 }

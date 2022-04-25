@@ -33,46 +33,38 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println("\u001b[31;1mUnable to add " +
                                 "customer, please try again...\u001b[0m");
-                        throw new RuntimeException(e);
+//                        throw new RuntimeException(e);
                     }
                     break;
                 case 2:
                     System.out.print("\nEnter customers ID: ");
                     int id = scnr.nextInt();
                     // make deposit
-                    Double amount = bank.deposit(customerList.find(id));
-                    // success
-                    if (amount != -1.00)
-                        System.out.printf("\u001b[32;1m$%.2f deposit was " +
-                                "successful \u001b[0m\n", amount);
-                        // account not found
-                    else
-                        System.out.println("\u001b[31;1mUnable to find " +
-                                "account, please try again...\u001b[0m");
+                    bank.deposit(customerList.find(id));
                     break;
                 case 3:
                     System.out.print("\nEnter customers ID: ");
                     id = scnr.nextInt();
                     // make withdraw
-                    amount = bank.withdraw(customerList.find(id));
-                    // account not found
-                    if (amount == -1.00)
-                        System.out.println("\u001b[31;1mUnable to find " +
-                                "account, please try again...\u001b[0m");
-                        // not enough money in account
-                    else if (amount == -2.00)
-                        System.out.println("\u001b[31;1mInsufficient funds.." +
-                                ".\u001b[0m");
-                        // success
-                    else
-                        System.out.printf("\u001b[32;1m$%.2f withdraw was " +
-                                "successful \u001b[0m\n", amount);
+                    bank.withdraw(customerList.find(id));
                     break;
                 case 4:
+                    System.out.print("\nEnter customers ID: ");
+                    id = scnr.nextInt();
                     // show specific customers transactions
+                    bank.showCustomerTransactions(customerList.find(id));
                     break;
                 case 5:
+                    System.out.print("\nEnter customers ID: ");
+                    id = scnr.nextInt();
                     // remove customer from bank
+                    int rm = customerList.remove(id);
+                    if (rm == -1)
+                        System.out.println("\u001b[31;1mNo customers found " +
+                                "with ID: " + id + "\u001b[0m");
+                    else
+                        System.out.printf("\u001b[32;1m[%d] was successfully " +
+                                "removed.\u001b[0m\n", id);
                     break;
                 case 6:
                     // edit customer account details
