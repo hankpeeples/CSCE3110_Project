@@ -37,18 +37,36 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.print("\nEnter customers id: ");
+                    System.out.print("\nEnter customers ID: ");
                     int id = scnr.nextInt();
+                    // make deposit
                     Double amount = bank.deposit(customerList.find(id));
+                    // success
                     if (amount != -1.00)
                         System.out.printf("\u001b[32;1m$%.2f deposit was " +
                                 "successful \u001b[0m\n", amount);
+                        // account not found
                     else
                         System.out.println("\u001b[31;1mUnable to find " +
                                 "account, please try again...\u001b[0m");
                     break;
                 case 3:
-                    // Withdraw
+                    System.out.print("\nEnter customers ID: ");
+                    id = scnr.nextInt();
+                    // make withdraw
+                    amount = bank.withdraw(customerList.find(id));
+                    // account not found
+                    if (amount == -1.00)
+                        System.out.println("\u001b[31;1mUnable to find " +
+                                "account, please try again...\u001b[0m");
+                        // not enough money in account
+                    else if (amount == -2.00)
+                        System.out.println("\u001b[31;1mInsufficient funds.." +
+                                ".\u001b[0m");
+                        // success
+                    else
+                        System.out.printf("\u001b[32;1m$%.2f withdraw was " +
+                                "successful \u001b[0m\n", amount);
                     break;
                 case 4:
                     // show specific customers transactions

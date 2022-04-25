@@ -53,6 +53,8 @@ public class Bank {
         System.out.println("[2] Deposit");
         System.out.println("[3] Withdraw");
         System.out.println("[4] Show customer transactions");
+        System.out.println("[5] Close account");
+        System.out.println("[6] Edit account details");
         System.out.println("[0] Exit");
 
         System.out.print("Option: ");
@@ -78,8 +80,23 @@ public class Bank {
     }
 
     // withdraw from customers account
-//    public String withdraw(HashTable<Integer, String, String, Double,
-//            ArrayList<Pair>> customerList) {
-//
-//    }
+    public Double withdraw(HashNode<Integer, String, String, Double,
+            ArrayList<Pair>> customer) {
+
+        if (customer != null) {
+            System.out.print("Enter withdraw amount: $");
+            Double amount = scnr.nextDouble();
+
+            if (customer.balance >= amount) {
+                customer.balance -= amount;
+
+                customer.transactions.add(new Pair("Withdraw", amount));
+
+                return amount;
+            }
+            // not enough money in account
+            return -2.00;
+        }
+        return -1.00;
+    }
 }
