@@ -132,6 +132,9 @@ public class HashTable<K, N, PN, B, T> {
         for (int i = 0; i < numBuckets; i++) {
             if (list.get(i) != null) {
                 HashNode<K, N, PN, B, T> customer = list.get(i);
+                // suppressing "Unchecked Cast:" warning because there is no
+                // alternative way to get around it
+                @SuppressWarnings({"unchecked"})
                 ArrayList<Pair> transactions = (ArrayList<Pair>) customer.transactions;
                 System.out.println("\t\u001b[33mID: \u001b[0m" + customer.key);
                 System.out.println("\t\u001b[33mName: \u001b[0m" + customer.name);
