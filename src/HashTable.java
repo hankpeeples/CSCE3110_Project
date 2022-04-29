@@ -34,12 +34,12 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // hash function
-    private int hashFunction(K key) {
-        return ((int) key % numBuckets);
+    private int hashFunction(int key) {
+        return key % numBuckets;
     }
 
     // find and return a specific customer
-    public HashNode<K, N, PN, B, T> find(K key) {
+    public HashNode<K, N, PN, B, T> find(int key) {
         // find head of chain for given key
         int index = hashFunction(key);
 
@@ -58,7 +58,7 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // add customer to the table
-    public void insert(K key, N name, PN phoneNumber, B balance, T transactions) {
+    public void insert(int key, N name, PN phoneNumber, B balance, T transactions) {
         // find head of chain
         int index = hashFunction(key);
         HashNode<K, N, PN, B, T> head = list.get(index);
@@ -80,8 +80,9 @@ public class HashTable<K, N, PN, B, T> {
         // insert key in chain
         size++;
         head = list.get(index);
-        HashNode<K, N, PN, B, T> newNode = new HashNode<K, N, PN, B, T>(key, name,
-                phoneNumber, balance, transactions);
+        // having generics casting issues
+        HashNode<K, N, PN, B, T> newNode = (HashNode<K, N, PN, B, T>)
+                new HashNode<>(key, name, phoneNumber, balance, transactions);
         newNode.next = head;
         list.set(index, newNode);
 
@@ -90,7 +91,7 @@ public class HashTable<K, N, PN, B, T> {
     }
 
     // remove a given customer
-    public Integer remove(K key) {
+    public Integer remove(int key) {
         int index = hashFunction(key);
         HashNode<K, N, PN, B, T> head = list.get(index);
 
