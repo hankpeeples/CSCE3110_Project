@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class Main {
 
+    // clear console screen
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
 
@@ -19,16 +25,20 @@ public class Main {
         ArrayList<Pair> pTransactions = new ArrayList<>();
         hTransactions.add(new Pair("Initial Deposit", 100.00));
         pTransactions.add(new Pair("Initial Deposit", 200.00));
-        customerList.insert(1, "Henry Peeples", "214-803-5021", 100.00,
+        customerList.insert(1, "Henry Peeples", "214-503-5121", 100.00,
                 hTransactions);
-        customerList.insert(2, "Perry Williams", "214-455-4567", 200.00,
+        customerList.insert(2, "Matt Damon", "214-455-4567", 200.00,
                 pTransactions);
 
+        clearScreen();
+
+        System.out.println("2 customers have been pre-loaded, type [7] to see them.");
         do {
             choice = bank.showMenu();
 
             switch (choice) {
                 case 1:
+                    clearScreen();
                     try {
                         bank.addNewCustomer(customerList);
                     } catch (Exception e) {
@@ -38,21 +48,25 @@ public class Main {
                     }
                     break;
                 case 2:
+                    clearScreen();
                     id = bank.getId();
                     // make deposit
                     bank.deposit(customerList.find(id));
                     break;
                 case 3:
+                    clearScreen();
                     id = bank.getId();
                     // make withdraw
                     bank.withdraw(customerList.find(id));
                     break;
                 case 4:
+                    clearScreen();
                     id = bank.getId();
                     // show specific customers transactions
                     bank.showCustomerTransactions(customerList.find(id));
                     break;
                 case 5:
+                    clearScreen();
                     id = bank.getId();
                     // remove customer from bank
                     int rm = customerList.remove(id);
@@ -64,12 +78,14 @@ public class Main {
                                 "removed.\u001b[0m\n", id);
                     break;
                 case 6:
+                    clearScreen();
                     System.out.print("\nEnter customers ID: ");
                     id = scnr.nextInt();
                     // edit customer account details
                     bank.editAccountDetails(customerList.find(id));
                     break;
                 case 7:
+                    clearScreen();
                     customerList.printCustomerList();
                     break;
                 case 0:
