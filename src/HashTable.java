@@ -80,7 +80,8 @@ public class HashTable<K, N, PN, B, T> {
         // insert key in chain
         size++;
         head = list.get(index);
-        // having generics casting issues
+
+        @SuppressWarnings("unchecked") // having generics casting issues
         HashNode<K, N, PN, B, T> newNode = (HashNode<K, N, PN, B, T>)
                 new HashNode<>(key, name, phoneNumber, balance, transactions);
         newNode.next = head;
