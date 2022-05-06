@@ -148,6 +148,7 @@ public class Bank {
                             "name...\u001b[0m");
 //                    throw new RuntimeException(e);
                 }
+                break;
             case 2:
                 try {
                     scnr.nextLine();

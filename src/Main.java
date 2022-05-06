@@ -44,7 +44,6 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println("\u001b[31;1mUnable to add " +
                                 "customer, please try again...\u001b[0m");
-//                        throw new RuntimeException(e);
                     }
                     break;
                 case 2:
