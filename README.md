@@ -41,15 +41,11 @@ This is a CSCE 3110 project made by Henry Peeples.
     * The Double value is the amount of 'money' being dealt.
 
 The main branch is the complete **CLI** implementation of the Bank System.
-<br>
-There is a `gui` branch that will be the **GUI** implementation of the Bank
-System.
 
 ### Usage
 
-To compile, navigate to the `src/` path within the project and
-run `javac *.java`
+To compile, run `javac src/*.java`
 <br>
-Now execute `java Main` to run program.
+Now execute `java src/Main` to run program.
 <br>
-You can now clean the project folder by running `rm -f *.class` if you wish.
+You can now clean the project folder by running `rm -f src/*.class` if you wish.
